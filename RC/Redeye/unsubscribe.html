@@ -1,0 +1,35 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		jQuery( document ).ready(function() {
+  			jQuery(".unsub").click(function() {
+  				
+  				var email = jQuery(".email").val()
+				var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+				
+				if (re.test(email)) {
+
+					var url = "https://reporting.regatta.com/cgi-bin/rr/blank.gif?nourl=unsubscribe&unsubscribe=unsubscribe&emailpermit=no&third_party=no&domain_id=14555&email=" + email;
+
+	  				jQuery("body").append(jQuery("<img>", { 
+	                    src : url, 
+	                    width : 1, 
+	                    height : 1, 
+	                    alt : "Redeye tag", 
+	                    title : "Redeye tag"
+	                }));
+
+	                jQuery( "form" ).replaceWith( "<div class='successmessage'>You are unsubscribed.</div>" );
+
+	          	}
+  			});
+  		});
+	</script>
+</head>
+
+<body>
+	<form>
+	  <label>Email: </label><input type="text" name="email" class="email"><br/>
+	  <button class="unsub">Unsubscribe</button>
+	</form>
+</body>
